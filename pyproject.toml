@@ -12,9 +12,9 @@ dependencies = []
 keywords = ["python", "sha3", "keccak"]
 
 [project.urls]
-Repository = "https://github.com/SimoneFelici/Pysha3"
-Documentation = "https://github.com/SimoneFelici/Pysha3?tab=readme-ov-file#python-sha3"
-Issues = "https://github.com/SimoneFelici/Pysha3/issues"
+Repository = "https://github.com/SimoneFelici/PyshaIII"
+Documentation = "https://github.com/SimoneFelici/PyshaIII?tab=readme-ov-file#pyshaiii"
+Issues = "https://github.com/SimoneFelici/PyshaIII/issues"
 
 [project.scripts]
 pyshaiii = "pyshaiii.main:main"
