@@ -1,0 +1,24 @@
+[project]
+name = "pyshaiii"
+version = "0.1.0"
+description = "Python implementation of the SHA-3 hash algorithm :)"
+readme = "README.md"
+authors = [
+    { name = "SimoneFelici", email = "felicisimone9@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+keywords = ["python", "sha3", "keccak"]
+
+[project.urls]
+Repository = "https://github.com/SimoneFelici/Pysha3"
+Documentation = "https://github.com/SimoneFelici/Pysha3?tab=readme-ov-file#python-sha3"
+Issues = "https://github.com/SimoneFelici/Pysha3/issues"
+
+[project.scripts]
+pyshaiii = "pyshaiii.main:main"
+
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
