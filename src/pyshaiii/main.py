@@ -33,19 +33,18 @@ ROUND_CONSTANTS = [
     0x8000000000008080, 0x0000000080000001, 0x8000000080008008
 ]
 
-def padding(message_bytes: bytes, rate_in_bits: int) -> bytes:
+def padding(message_bytes: bytes, rate_in_bits: int, suffix: int = 0x06) -> bytes:
     rate_in_bytes = rate_in_bits // 8
-    message_bytes += b'\x06'  # delimitatore per SHA-3
+    m = bytearray(message_bytes)
+    m.append(suffix)
 
-    zeros_to_add = rate_in_bytes - (len(message_bytes) % rate_in_bytes)
+    # 2) zeri fino a lasciare l'ultima byte del blocco libera
+    zeros = (-len(m) - 1) % rate_in_bytes
+    if zeros:
+        m.extend(b'\x00' * zeros)
+    m.append(0x80)
+    return bytes(m)
 
-    if zeros_to_add == 0:
-        zeros_to_add = rate_in_bytes
-
-    message_bytes += b'\x00' * (zeros_to_add - 1)
-    message_bytes += b'\x80'  # ultimo byte del padding
-
-    return message_bytes
 
 def divide_into_blocks(padded_bytes: bytes, rate_in_bits: int) -> list[bytes]:
     rate_in_bytes = rate_in_bits // 8
